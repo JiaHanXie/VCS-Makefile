@@ -51,7 +51,7 @@ rtl_3step: rtl_ana rtl_comp rtl_sim rtl_cov
 rtl_ana:
 	vlogan ./TB/Top_tb.v -f $(filelist) +define+$(Pattern) -full64 -v2005 +v2k | tee ./log/rtl_sim.log
 rtl_comp:
-	vcs  ./TB/Top_tb.v -f $(filelist) +define+$(Pattern) -full64 -v2005 +v2k -cm $(COV_OPT) | tee ./log/rtl_sim.log
+	vcs  ./TB/Top_tb.v -f $(filelist) +define+$(Pattern) -full64 -v2005 +v2k -cm $(COV_OPT) | tee -a ./log/rtl_sim.log
 rtl_sim:
 	./simv -cm $(COV_OPT)
 rtl_cov:
